@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>PayPalIntegrtion</RootNamespace>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <UserSecretsId>PayPalIntegrtion-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
+    <PackageReference Include="PayPal.Api" Version="1.0.6" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="7.0.1" />
+    <PackageReference Include="Volo.Abp.Account.Web.OpenIddict" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite" Version="2.0.0-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayPalIntegrtion.Application\PayPalIntegrtion.Application.csproj" />
+    <ProjectReference Include="..\PayPalIntegrtion.EntityFrameworkCore\PayPalIntegrtion.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\PayPalIntegrtion.HttpApi\PayPalIntegrtion.HttpApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+</Project>
