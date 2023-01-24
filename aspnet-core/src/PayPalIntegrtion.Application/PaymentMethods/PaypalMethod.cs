@@ -77,7 +77,7 @@ public class PaypalMethod : IPaymentMethod
         request.Prefer("return=representation");
         request.RequestBody(order);
 
-        var result = (await _payPalHttpClient.Execute(request)).Result<Order>();
+        var result = (await _payPalHttpClient.Execute(request)).Result<Order>();//error
 
         return new PaymentRequestStartResultDto
         {
@@ -89,7 +89,11 @@ public class PaypalMethod : IPaymentMethod
     {
         var request = new OrdersCaptureRequest(token);
         request.RequestBody(new OrderActionRequest());
-
+        Order orderStatus = new Order()
+        {
+            Status="Approved"
+        };
+        
         var order = (await _payPalHttpClient.Execute(request)).Result<Order>();
 
         var paymentRequestId = Guid.Parse(order.PurchaseUnits.First().ReferenceId);
